@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Front-End Bootcamp</title>
+</head>
+
+<body>
+
+    <!-- ================= start : NAVBAR SECTION ================ -->
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 sticky-top">
+        <!-- burada navbar-expand-lg demek lg'den sonra expand yaparak büyüt,  lg'den önce gösterme demek -->
+        <!-- buradaki navbar-expand-lg'yi, navbar-expand olarak kullanırsan ilgili buton gelmez -->
+        <!-- videoda fixed-top yaptı navbarı ama bu sefere resimdeki kadının kafası navbarın altında kaldı.
+        Bunu engellemek için de sonra css dosyamız içerisinde body::before selectoru ile display:block; content:'';
+        height:60px; verdi ki body biraz aşağı gelsin. ben ise tüm bunların yerine sticky-top kullandım ve bu şekilde
+        çözdüm problemi -->
+
+        <div class="container">
+            <!-- anladığım kadarıyla buradaki container responsiveness için gerekli -->
+
+
+            <a href="#" class="navbar-brand btn">Front-End Bootcamp</a>
+
+
+            <!-- <a href="#" class="navbar-brand ms-5">Front-End Bootcamp</a> -->
+            <!-- burada normalde videoda <a> tagini başka bir div koyup soldan margin veriyor ben a tagine'ına soldan margin verdim
+             ms-5 ile  o da çalıştı. ama videoda yapıldığı gibi devam ediyorum -->
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <!-- buradaki ifade düğmeyi oluşturuyor. data-bs-target="#navmenu" ile id'si navmenu olan yeri işaret ediyoruz -->
+                <!-- button'daki data-bs-target ile ilgili divdeki id aynı olmayınca menu yine collapse oluyor, yerine button geliyor ama butondan açılmıyor menüdeki itemlar  -->
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <!-- buradaki id'nin data-bs-target ile aynı olması önemli -->
+
+
+                <ul class="navbar-nav ms-auto">
+                    <!-- burada ms-auto yani margin-left:auto veriyor ama metin sağa yaslanıyor. bunu ya yanlış anladım ya da bilmediğim bir şeyler var -->
+
+                    <li class="nav-item">
+                        <a href="#learn" class="nav-link">What You'll Learn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instructors" class="nav-link">Instructors</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- ================= end   : NAVBAR SECTION ================ -->
+
+    <!-- ================= start : SHOWCASE SECTION ================ -->
+
+    <section class="bg-dark text-light p-5 p-sm-0 pt-lg-3 text-center" id="showcase">
+        <!-- p-sm-0 kullanmamım sebebi resmi bir sonraki newsletter sectiona yaslamak sm üzerindeki ekran boyunlarında
+        paddingi sıfırlayarak. videoda p-lg-0 kullandı ama ben aynı sonucu gördüğüm için erken başlasın diye p-sm-0 verdim-->
+
+
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <!-- <div class="d-flex"></div> -->
+                <!-- d-flex tüm boyutlarda flex uygular. d-sm-flex small üzerindeki ekran sizelarında flex uygular -->
+                <div>
+                    <h1> Become a <span class="text-warning">Web Developer</span></h1>
+                    <p class="lead my-4 text-center text-sm-start">We focus on teaching our students the fundamentals of
+                        the latest and greatest technologies to prepare them for their first developer role</p>
+                    <!-- önce ekran boyutundan bağımsız olarak text-center ile ortalatıyoruz, sonra da text-sm-start ile
+                    small skran boyutu üzerinde sola yasla diyoruz -->
+
+
+                    <button class="btn btn-primary btn-lg mb-2 mb-sm-1" data-bs-toggle="modal"
+                        data-bs-target="#enroll">Start the Enrollment</button>
+                    <!-- buradaki buton newsletter sectiona yaslandığı için small altında 2, üstünde 1 margin verdim ki ayrılsın birbirinden -->
+                </div>
+                <img class="img-fluid w-50 d-none d-sm-block" src="images/showcase.png" alt="showcase">
+
+                <!-- w-50 img'i yarı boyutuna getiriyor -->
+                <!-- öncelikle ekran boyutundan bağımsız olarak d-none ile gösterme dedim. Sonra d-sm-block ile dedim ki sm
+                ve üzerine çıktığında block element olarak göster. Bu videoda yok ben ekledim -->
+
+                <img class="img-thumbnail w-50 d-inline d-sm-none bg-dark border-5 border-warning mt-2"
+                    style="filter: grayscale(30%)" src="images/showcase.png" alt="showcase">
+                <!-- bunu ben ekledim. bunu da küçük ekran boyutunda thumbnail olarak göstersin büyük ekranda göstermesin diye verdim. -->
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ================= end   : SHOWCASE SECTION ================ -->
+
+
+
+    <!-- ================= start : NEWSLETTER SECTION ================ -->
+
+    <section class="bg-primary text-light p-5" id="newsletter">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <h3 class="mb-3 mb-md-0">Sign Up for Our Newsletter</h3>
+
+
+                <div class="input-group news-input">
+                    <!-- buradaki news-input bizim css dosyamızdan gelen bir class -->
+                    <!-- bu news-input class'ina bir media query bağlayıp çalıştırıyoruz  ve diyoruz ki -->
+                    <!-- bulunduğun divin %50'si kadar yer kapla -->
+                    <input type="text" class="form-control" placeholder="Enter Your E-mail Address">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-light btn-lg rounded-0 rounded-end" type="button">Sign
+                            Up</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- ================= end   : NEWSLETTER SECTION ================ -->
+
+    <!-- ================= start : BOXES SECTION ================ -->
+    <secstion class="p-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <!-- g-4 içerideki elemanlara gap vermek için kullanılıyor -->
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <i class="bi bi-laptop h1 mb-3"></i>
+                            <!-- bu iconu ekledikten sonra video'da h1 classlı div tagı içine koydu büyütmek için . ben doğrudan h1 class'i ekledim -->
+                            <h3 class="card-title mb-3">Virtual</h3>
+                            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit earum
+                                provident asperiores aliquid facere distinctio. Lorem ipsum dolor sit amet.</p>
+
+                            <a href="#" class="btn btn-primary">Read More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-secondary text-light">
+                        <div class="card-body text-center">
+                            <i class="bi bi-people h1 mb-3"></i>
+                            <!-- bu iconu ekledikten sonra video'da h1 classlı div tagı içine koydu büyütmek için . ben doğrudan h1 class'i ekledim -->
+                            <h3 class="card-title mb-3">Virtual</h3>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo accusamus
+                                veritatis deserunt, veniam culpa reiciendis! Lorem, ipsum. Lorem, ipsum.
+
+                            </p>
+
+                            <a href="#" class="btn btn-dark">Read More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <i class="bi bi-laptop h1 mb-3"></i>
+                            <!-- bu iconu ekledikten sonra video'da h1 classlı div tagı içine koydu büyütmek için . ben doğrudan h1 class'i ekledim -->
+                            <h3 class="card-title mb-3">In Person</h3>
+                            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit earum
+                                provident asperiores aliquid facere distinctio. Lorem ipsum dolor sit amet.</p>
+
+                            <a href="#" class="btn btn-primary">Read More...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- ================= end   : BOXES SECTION ================ -->
+
+
+
+        <!-- ================= start : LEARN SECTION ================ -->
+
+        <section class="p-5" id="learn">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md">
+                        <img src="images/fundamentals.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-md p-5 text-center">
+                        <h2>Learn the Fundamentals</h2>
+                        <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos,
+                            ratione ducimus?
+                            Culpa repellendus velit corporis.</p>
+                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eius
+                            tenetur debitis
+                            eveniet ea nobis aliquam numquam. Distinctio porro incidunt omnis ab fuga pariatur
+                            dignissimos officia, cumque consequatur hic doloribus.</p>
+                        <a href="#" class="btn btn-light mt-3">
+                            <i class="bi bi-chevron-right"></i> Read more...
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-5 bg-dark text-light" id="learn">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+
+
+                    <div class="col-md p-5 text-center">
+                        <h2>Learn React</h2>
+                        <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos,
+                            ratione ducimus?
+                            Culpa repellendus velit corporis.</p>
+                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eius
+                            tenetur debitis
+                            eveniet ea nobis aliquam numquam. Distinctio porro incidunt omnis ab fuga pariatur
+                            dignissimos officia, cumque consequatur hic doloribus.</p>
+                        <a href="#" class="btn btn-light mt-3">
+                            <i class="bi bi-chevron-right"></i> Read more...
+                        </a>
+
+                    </div>
+
+                    <div class="col-md">
+                        <img src="images/react.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- https://www.youtube.com/watch?v=4sosXZsdy-s -->
+        <!-- ================= end   : LEARN SECTION ================ -->
+
+        <!-- ================= start : QUESTIONS SECTION ================ -->
+        <section class="p5" id="questions">
+            <div class="container">
+                <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+
+                <!-- -----Accordion Pasted----- -->
+
+                <!-- Accordion-Top -->
+                <div class="accordion accordion-flush" id="Questions">
+                    <!-- id'yi değiştirip Questions yaptık.
+                    ardından tüm aria geçen attirbute'ları sildik itemlardak-->
+
+                    <!-- ---Accordion Item 1--- -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- h2 içinde bulunan id="flush-headingOne" vs id'leri silebilirsin. ne işe yaradığını tespit
+                            edemedim henüz -->
+
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapser1">
+                                Where exactly are you located?
+                            </button>
+                        </h2>
+                        <div id="collapser1" class="accordion-collapse collapse" data-bs-parent="#Questions">
+                            <!-- data-bs-parent koymadığın zaman da çalışıyor ama birini açtığın zaman diğer açık olan
+                            kapanmıyor bunu sağlamak için öncelikle accordion itemların kapsayıcısına id vereceksin
+                            (Question) ve accordion-itemlerin her birinin içinde data-bs-parent=# hashtag ile bu id'yi çağıracaksın -->
+
+                            <div class="accordion-body">We are located in various locations throughout US incuding New
+                                York City, Los Angeles, Chicago, Houston and Philadelphia. We also have various partners
+                                around the World. Our main Europe office is located in United Kingdom. </div>
+                        </div>
+                    </div>
+
+                    <!-- ---Accordion Item 2--- -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- h2 içinde bulunan id="flush-headingOne" vs id'leri silebilirsin. ne işe yaradığını tespit
+                            edemedim henüz -->
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapser2">
+                                How much does it cost to attend the courses?
+                            </button>
+                        </h2>
+                        <div id="collapser2" class="accordion-collapse collapse" data-bs-parent="#Questions">
+                            <!-- data-bs-parent koymadığın zaman da çalışıyor ama birini açtığın zaman diğer açık olan
+                            kapanmıyor bunu sağlamak için öncelikle accordion itemların kapsayıcısına id vereceksin ve
+                            accordion-itemlerin her birinin içinde data-bs-parent=# hashtag ile bu id'yi çağıracaksın -->
+
+                            <div class="accordion-body">Course fees are dependent on the country or the city from which
+                                you are taking the course. Length (months), type (beginner, intermediate, advanced etc.)
+                                and the course itself (Front-End , Back-End, Full Stack etc.) significantly affects the
+                                course fees. We suggest you to consult to our nearest office. In order to find the
+                                nearest office to your location <a href="#">Please Click</a> </div>
+                        </div>
+                    </div>
+
+                    <!-- ---Accordion Item 3 --- -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- h2 içinde bulunan id="flush-headingOne" vs id'leri silebilirsin. ne işe yaradığını tespit
+                            edemedim henüz -->
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapser3">
+                                <!-- data-bs-parent koymadığın zaman da çalışıyor ama birini açtığın zaman diğer açık olan
+                            kapanmıyor bunu sağlamak için öncelikle accordion itemların kapsayıcısına id vereceksin ve
+                            accordion-itemlerin her birinin içinde data-bs-parent=# hashtag ile bu id'yi çağıracaksın -->
+
+                                What are the prerequisites for the courses?
+                            </button>
+                        </h2>
+                        <div id="collapser3" class="accordion-collapse collapse" data-bs-parent="#Questions">
+                            <div class="accordion-body">We offer courses for the people from various age groups and
+                                various backgrounds. Our courses start from beginner level to advanced level for
+                                professionals. The only prerequisite we demand is the basic computer skill. </div>
+                        </div>
+                    </div>
+
+                    <!-- ---Accordion Item 4 --- -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- h2 içinde bulunan id="flush-headingOne" vs id'leri silebilirsin. ne işe yaradığını tespit
+                            edemedim henüz -->
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapser4">
+                                <!-- data-bs-parent koymadığın zaman da çalışıyor ama birini açtığın zaman diğer açık olan
+                            kapanmıyor bunu sağlamak için öncelikle accordion itemların kapsayıcısına id vereceksin ve
+                            accordion-itemlerin her birinin içinde data-bs-parent=# hashtag ile bu id'yi çağıracaksın -->
+
+                                How can I sign up?
+                            </button>
+                        </h2>
+                        <div id="collapser4" class="accordion-collapse collapse" data-bs-parent="#Questions">
+                            <div class="accordion-body">There are various options to sign up. You can navigate to the
+                                sign-up section of our Web page or email us if you prefer internet to sign up. Also you
+                                can visit or call one of our offices. We would be glad to see you with us.</div>
+                        </div>
+                    </div>
+
+                    <!-- ---Accordion Item 5 --- -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- h2 içinde bulunan id="flush-headingOne" vs id'leri silebilirsin. ne işe yaradığını tespit edemedim henüz -->
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapser5">
+                                <!-- data-bs-parent koymadığın zaman da çalışıyor ama birini açtığın zaman diğer açık olan
+                                    kapanmıyor bunu sağlamak için öncelikle accordion itemların kapsayıcısına id vereceksin ve
+                                    accordion-itemlerin her birinin içinde data-bs-parent=# hashtag ile bu id'yi çağıracaksın -->
+
+                                Do you help participants to find a job?
+                            </button>
+                        </h2>
+                        <div id="collapser5" class="accordion-collapse collapse" data-bs-parent="#Questions">
+                            <div class="accordion-body">Our Human Resources department will be guiding you through job
+                                interviews and will be helping you to improve your CV. Moreover, you will be invited to
+                                job interviews by our business partners. We assure you that you will not have any
+                                struggle to
+                                find a job since software development is still a demanding sector for new recruits.
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- -----Accordion Pasted----- -->
+
+            </div>
+
+        </section>
+        <!-- ================= end   : QUESTIONS SECTION ================ -->
+
+        <!-- ================= start : INSTRUCTORS SECTION ================ -->
+        <section id="instructors" class="p-5 bg-primary">
+            <div class="container">
+                <h2 class="text-center text-white"> Our Instructors</h2>
+                <p class="lead text-center text-white mb-5"> All of our Instructors have at least 5 years of experience
+                    as a developer in the industry</p>
+                <div class="row g-4">
+
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="instructor1"
+                                    class="rounded-circle mb-3">
+                                <h3 class="card-title mb-3">John Smith</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab optio
+                                    nulla tenetur illum, quae placeat.</p>
+                                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="instructor2"
+                                    class="rounded-circle mb-3">
+                                <h3 class="card-title mb-3">Jane Palmer</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab optio
+                                    nulla tenetur illum, quae placeat.</p>
+                                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="instructor1"
+                                    class="rounded-circle mb-3">
+                                <h3 class="card-title mb-3">Lucy Lee</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab optio
+                                    nulla tenetur illum, quae placeat.</p>
+                                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="instructor1"
+                                    class="rounded-circle mb-3">
+
+                                <h3 class="card-title mb-3 d-none d-lg-block">Hakeem M.</h3>
+                                <h3 class="card-title mb-3 d-lg-none">Hakeem Al-Musharraf</h3>
+                                <!-- iki adet h3 tagi large breakpointine göre çalışıyor. ekran büyüüynce sütun sayısı
+                                arttığı için Al-Musharraf yazısı sığmıyor. ekran küçükken 2 sütun olduğu için adını ve
+                                soyadını tam yazdırıyoruz. ekran büyüyünce sütun sayısı arttığı için sığmadığından
+                                sadece adını ve soyadının baş harfini yazdırıyoruz. Bunu ben denedim ve oldu -->
+
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab optio
+                                    nulla tenetur illum, quae placeat.</p>
+                                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= end   : INSTRUCTORS SECTION ================ -->
+
+        <!-- ================= start : CONTACT & MAP SECTION ================ -->
+
+        <section class="p-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md">
+                        <h2 class="text-center mb-4">Contact Info</h2>
+                        <ul class="list-group list-group-flush lead">
+                            <li class="list-group-item">
+                                <span class="fw-bold">Main Location</span>
+                                50 Main Street Boston MA
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="fw-bold">Enrollment Phone Number:</span>
+                                555-123456
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="fw-bold">Student's Service:</span>
+                                555-32101
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="fw-bold">Enrollment Email:</span>
+                                enroll@frontendbootcamp.com
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col md">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d876.3128002353353!2d-71.06273695519089!3d42.37336105800168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2str!4v1661228734326!5m2!1sen!2str"
+                            width="600" height="300" style="border: solid 2px #0d6efd; border-radius: 10px;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= end   : CONTACT & MAP SECTION ================ -->
+
+
+        <!-- ================= start : FOOTER SECTION ================ -->
+
+        <footer class="p-5 bg-dark text-white text-center position-relative">
+            <div class="container">
+                <p class="lead"> Copyright &copy; 2021 Front-End Bootcamp 
+                    <!-- <a href="#questions" class="p-5">
+                        <i class="bi bi-arrow-up-circle h1"></i>
+                    </a>  -->
+                </p>
+            </div>
+            <hr>
+            <div class="container">
+                <a href="#" class="p-5 text-decoration-none">
+                    <i class="bi bi-house-door h1"></i>
+                </a>
+                <a href="#questions" class="p-5 text-decoration-none">
+                    <i class="bi bi-question-circle h1"></i>
+                </a>
+                
+                <a href="#instructors" class="p-5 text-decoration-none">
+                    <i class="bi bi-person-circle h1"></i>
+                </a>
+
+                <a href="#learn" class="p-5 text-decoration-none">
+                    <i class="bi bi-book h1"></i>
+                </a>
+
+                <a href="#newsletter" class="p-5 text-decoration-none">
+                    <i class="bi bi-file-text h1"></i>
+                </a>
+
+                <a href="#showcase" class="p-5 text-decoration-none">
+                    <i class="bi bi-newspaper h1"></i>
+                </a>
+
+
+            </div>
+        </footer>
+
+
+        <!-- ================= end   : FOOTER SECTION ================ -->
+
+
+        <!-- Modal -->
+        <!-- modal'ın butonu showcase section'da ama bunu istediğimiz her yere koyabliriz. burayı tercih ettik -->
+
+        <div class="modal fade" id="enroll" tabindex="-1" aria-labelledby="EnrollLabel" aria-hidden="true">
+            <!-- id=enroll  showcase seciton'daki butonun data-bs-target="#enroll" özellği ile aynı olmalı-->
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="EnrollLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">Fill out this form and we will get back to you.</p>
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="first-name" class="col-form-label">
+                                    First Name
+                                </label>
+                                <input type="text" id="first-name" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="last-name" class="col-form-label">
+                                    Last Name
+                                </label>
+                                <input type="text" id="last-name" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">
+                                    Enter your email
+                                </label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phoneNo" class="col-form-label">
+                                    Phone number
+                                </label>
+                                <input type="number" id="phoneNo" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
